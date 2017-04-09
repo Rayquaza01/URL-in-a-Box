@@ -13,5 +13,5 @@ function restoreOptions() {
         document.querySelector("#url").value = res.url || "https://wikipedia.org";
     });
 }
-document.addEventListener('DOMContentLoaded', restoreOptions);
-document.querySelector("form").addEventListener("submit", saveOptions);
+document.addEventListener("DOMContentLoaded", restoreOptions);
+document.getElementById("url").addEventListener("input", saveOptions);
