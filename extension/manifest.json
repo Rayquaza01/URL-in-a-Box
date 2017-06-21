@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "URL in a Box",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Puts a URL in a browser action",
     "applications": {
         "gecko": {
@@ -20,7 +20,13 @@
     ],
     "browser_action": {
         "browser_style": false,
-        "default_icon": "icons/icon.svg"
+        "default_icon": "icons/icon.svg",
+        "default_popup": "blank.html"
+    },
+    "sidebar_action": {
+        "default_icon": "icons/icon.svg",
+        "default_title": "URL in a Box",
+        "default_panel": "blank.html"
     },
     "options_ui": {
         "browser_style": true,
