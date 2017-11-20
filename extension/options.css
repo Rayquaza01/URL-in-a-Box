@@ -1,24 +1,51 @@
 body, input {
     font-size: 1.25rem;
 }
-#box {
-    align-items: center;
+.row {
     display: flex;
-    float: left;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+    border-bottom: 1px solid;
+    line-height: 25px;
 }
-#labels {
-    float: left;
-    width: 50%;
+.row:last-child {
+    border-bottom: none;
 }
-#settings {
-    float: right;
-    width: 50%;
+.row > input {
+    flex-grow: 1;
 }
-span {
-    line-height: 30px;
+.row > span {
+    flex-grow: .25;
 }
-input {
-    height: 30px;
+img {
+    width: 20px;
+    height: 20px;
+}
+input[type="file"] {
+    display: none;
+}
+label {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    font-size: 13px;
+    background-color: rgba(12, 12, 13, .1);
+    border: none;
+    border-radius: 2px;
     text-align: right;
-    width: 100%;
 }
+label:hover {
+    background-color: rgba(12, 12, 13, 0.2);
+}
+label:active {
+    background-color: rgba(12, 12, 13, 0.3);
+}
+.row > .spacer {
+    flex-grow: 1;
+}
+/* input { */
+/*     height: 30px; */
+/*     text-align: right; */
+/*     width: 100%; */
+/* } */

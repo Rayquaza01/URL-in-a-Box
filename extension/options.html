@@ -5,14 +5,34 @@
         <link rel="stylesheet" type="text/css" href="options.css">
     </head>
     <body>
-        <div id="box">
-            <div id="labels">
-                <span>URL to appear in popup</span><br>
-                <span>URL to appear in sidebar</span>
+        <h3>Browser Action</h3>
+        <div id="ba-box">
+            <div class="row">
+                <span>URL</span><input id="ba-url" type="url">
             </div>
-            <div id="settings">
-                <input id="url" type="url"><br>
-                <input id="urlSidebar" type="url">
+            <div class="row">
+                <span>Title</span><input id="ba-title" type="text">
+            </div>
+            <div class="row">
+                <span>Icon</span>
+                <label for="ba-icon">Select Icon</label><input id="ba-icon" type="file" accept="image/*"><img id="ba-icon-prev">
+                <img title="Reset icon" src="icons/close.png" id="ba-icon-reset">
+                <span class="spacer"></span>
+            </div>
+        </div>
+        <h3>Sidebar</h3>
+        <div id="si-box">
+            <div class="row">
+                <span>URL</span><input id="si-url" type="url">
+            </div>
+            <div class="row">
+                <span>Title</span><input id="si-title" type="text">
+            </div>
+            <div class="row">
+                <span>Icon</span>
+                <label for="si-icon">Select Icon</label><input id="si-icon" type="file" accept="image/*"><img id="si-icon-prev">
+                <img title="Reset icon" src="icons/close.png" id="si-icon-reset">
+                <span class="spacer"></span>
             </div>
         </div>
         <script src="options.js"></script>
