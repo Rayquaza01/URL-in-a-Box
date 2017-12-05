@@ -1,6 +1,5 @@
 const baBox = document.getElementById("ba-box");
 const baURL = document.getElementById("ba-url");
-console.log(baBox);
 const baTitle = document.getElementById("ba-title");
 const baIcon = document.getElementById("ba-icon");
 const baIconPrev = document.getElementById("ba-icon-prev");
@@ -24,18 +23,6 @@ function saveOptions() {
         urlSidebar: urlSidebar,
         titleSidebar: titleSidebar
     });
-    browser.browserAction.setPopup({
-        popup: url
-    });
-    browser.browserAction.setTitle({
-        title: title
-    });
-    browser.sidebarAction.setPanel({
-        panel: urlSidebar
-    });
-    browser.sidebarAction.setTitle({
-        title: titleSidebar
-    });
 }
 
 function getIcon(type) {
@@ -43,16 +30,16 @@ function getIcon(type) {
     var reader = new FileReader()
     reader.addEventListener("load", () => {
         switch (type) {
-            case "ba":
-                baIconPrev.src = reader.result;
-                browser.browserAction.setIcon({path: reader.result});
-                browser.storage.local.set({icon: reader.result});
-                break;
-            case "si":
-                siIconPrev.src = reader.result;
-                browser.sidebarAction.setIcon({path: reader.result});
-                browser.storage.local.set({iconSidebar: reader.result});
-                break;
+        case "ba":
+            baIconPrev.src = reader.result;
+            browser.browserAction.setIcon({path: reader.result});
+            browser.storage.local.set({icon: reader.result});
+            break;
+        case "si":
+            siIconPrev.src = reader.result;
+            browser.sidebarAction.setIcon({path: reader.result});
+            browser.storage.local.set({iconSidebar: reader.result});
+            break;
         }
     });
     reader.readAsDataURL(file);
@@ -60,21 +47,21 @@ function getIcon(type) {
 
 function resetIcon(type) {
     switch(type) {
-        case "ba":
-            baIconPrev.src = "/icons/icon-96.png";
-            browser.browserAction.setIcon({path: "/icons/icon-96.png"});
-            browser.storage.local.set({icon: "/icons/icon-96.png"});
-            break;
-        case "si":
-            siIconPrev.src = "/icons/icon-96.png";
-            browser.sidebarAction.setIcon({path: "/icons/icon-96.png"});
-            browser.storage.local.set({icon: "/icons/icon-96.png"});
-            break;
+    case "ba":
+        baIconPrev.src = "/icons/icon-96.png";
+        browser.browserAction.setIcon({path: "/icons/icon-96.png"});
+        browser.storage.local.set({icon: "/icons/icon-96.png"});
+        break;
+    case "si":
+        siIconPrev.src = "/icons/icon-96.png";
+        browser.sidebarAction.setIcon({path: "/icons/icon-96.png"});
+        browser.storage.local.set({icon: "/icons/icon-96.png"});
+        break;
     }
 }
 
 async function restoreOptions() {
-    var res = await browser.storage.local.get()
+    var res = await browser.storage.local.get();
     baURL.value = res.url || "https://wikipedia.org";
     baTitle.value = res.title || "URL in a Box";
     baIconPrev.src = res.icon || "/icons/icon-96.png";
@@ -84,8 +71,8 @@ async function restoreOptions() {
     siIconPrev.src = res.iconSidebar || "/icons/icon-96.png";
 }
 
-baBox.addEventListener("change", saveOptions);
-siBox.addEventListener("change", saveOptions);
+baBox.addEventListener("input", saveOptions);
+siBox.addEventListener("input", saveOptions);
 baIcon.addEventListener("change", getIcon.bind(baIcon, "ba"));
 siIcon.addEventListener("change", getIcon.bind(siIcon, "si"));
 baIconReset.addEventListener("click", resetIcon.bind(null, "ba"));
