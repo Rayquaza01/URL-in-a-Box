@@ -5,13 +5,13 @@ function getContext() {
 }
 
 async function load() {
-    var res = await browser.storage.local.get("url");
+    var res = await browser.storage.local.get();
     switch (getContext()) {
     case "popup":
-        location.href = res.url;
+        location.href = res.url || "https://wikipedia.org";
         break;
     case "sidebar":
-        location.href = res.urlSidebar;
+        location.href = res.urlSidebar || "https://wikipedia.org";
         break;
     }
 }
